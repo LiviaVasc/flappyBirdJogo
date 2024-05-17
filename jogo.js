@@ -2,7 +2,7 @@ console.log('[LiviaVasc] Flappy Bird');
 
 
 const sprites = new Image();
-sprites.src = 'C:/Users/livia/OneDrive/Documentos/flappyBird/sprites.png';
+sprites.src = 'C:/Users/livia/OneDrive/Documentos/flappyBirdJogo/sprites.png';
 
 
 const canvas = document.querySelector('canvas');
