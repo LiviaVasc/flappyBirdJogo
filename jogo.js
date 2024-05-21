@@ -260,6 +260,30 @@ function criaCanos() {
     return canos;
 }
 
+function criaPlacar(){
+    const placar ={
+        pontuacao: 0,
+        desenha(){
+            contexto.font = '35px "VT323"';
+            contexto.textAlign = 'right'
+            contexto.fillStyle = "white"
+            contexto.fillText(`${placar.pontuacao}`, canvas.width - 10, 35);
+            placar.pontuacao
+        },
+        atualiza(){
+            const inetrvaloDeFrames = 20;
+            const passouDoIntervalo = frames % inetrvaloDeFrames === 0;
+
+            if (passouDoIntervalo) {
+                placar.pontuacao = placar.pontuacao + 1;
+            }
+        }
+
+
+    }
+    return placar
+}
+
 //Tela de início
 const mensagemGetReady = {
     spriteX: 134,
@@ -315,11 +339,15 @@ const Telas = {
 };
 
 Telas.JOGO = {
+    inicializa(){
+    globais.placar = criaPlacar();
+    },
     desenha(){
         planoDeFundo.desenha();
         globais.canos.desenha();
         globais.chao.desenha();
         globais.flappyBird.desenha();
+        globais.placar.desenha();
     },
     click(){
         globais.flappyBird.pula();
@@ -328,6 +356,7 @@ Telas.JOGO = {
         globais.canos.atualiza();
         globais.chao.atualiza();
         globais.flappyBird.atualiza();
+        globais.placar.atualiza();
     }
 }
 
